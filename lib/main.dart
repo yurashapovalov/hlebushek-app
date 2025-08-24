@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:supabase/supabase.dart';
 import 'config/supabase_config.dart';
+import 'screens/auth/login_screen.dart';
+import 'screens/home/home_screen.dart';
 
 // Глобальный экземпляр Supabase клиента
 final supabase = SupabaseClient(
   SupabaseConfig.supabaseUrl,
   SupabaseConfig.supabaseAnonKey,
+  authOptions: const AuthClientOptions(
+    authFlowType: AuthFlowType.implicit, // Используем implicit flow вместо PKCE
+  ),
 );
 
 Future<void> main() async {
@@ -26,7 +31,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Привет, Хлебушек! 🍞'),
+      home: const LoginScreen(),
+      routes: {'/home': (context) => const HomeScreen()},
     );
   }
 }

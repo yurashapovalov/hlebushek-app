@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   
   # Supabase core для бэкенда (без auth flows)
-  supabase: ^2.0.0
+  supabase: ^2.3.4
   http: ^1.0.0
 
 dev_dependencies:
